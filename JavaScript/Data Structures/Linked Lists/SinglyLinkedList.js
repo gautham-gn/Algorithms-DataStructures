@@ -53,7 +53,7 @@ class SinglyLinkedList {
         if (this.length === 0){
             this.tail = null;
         }
-        return node.val;
+        return node;
     }
 
     unshift(val){
@@ -128,14 +128,14 @@ class SinglyLinkedList {
         } else if (idx === 0){
             return this.shift();
         } else if (idx === this.length - 1){
-            return this.pop().val;
+            return this.pop();
         } else {
             let preNode = this.get(idx-1);
             let currentNode = this.get(idx);
             preNode.next = currentNode.next;
             currentNode.next = null;
             this.length -= 1;
-            return currentNode.val;
+            return currentNode;
         }
     }
 }
