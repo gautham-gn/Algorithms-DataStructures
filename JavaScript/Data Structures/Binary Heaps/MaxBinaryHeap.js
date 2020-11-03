@@ -25,7 +25,8 @@ class MaxBinaryHeap {
         let parent = 0;
         let leftChild = 2 * parent + 1;
         let rightChild = 2 * parent + 2;
-        while (this.maxHeap[parent] < this.maxHeap[leftChild] || this.maxHeap[parent] < this.maxHeap[rightChild]){
+        while (this.maxHeap[parent] < this.maxHeap[leftChild]
+             || this.maxHeap[parent] < this.maxHeap[rightChild]){
             if (this.maxHeap[leftChild] < this.maxHeap[rightChild]){
                 let temp = this.maxHeap[rightChild];
                 this.maxHeap[rightChild] = this.maxHeap[parent];
