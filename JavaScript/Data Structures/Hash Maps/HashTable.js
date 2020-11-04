@@ -27,16 +27,14 @@ class HashTable {
 
     get(key) {
         let hash = this._hash(key);
-        if (!this.keyMap[hash]) {
-            return
-        } else {
+        if (this.keyMap[hash]) {
             for (let i = 0; i < this.keyMap[hash].length; i++) {
                 if (this.keyMap[hash][i][0] === key) {
                     return this.keyMap[hash][i][1];
                 }
             }
-            return;
         }
+        return;
     }
 }
 
