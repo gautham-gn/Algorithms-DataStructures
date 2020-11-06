@@ -46,7 +46,7 @@ class PriorityQueue {
                 }
             }
             if (rightChildIdx < length) {
-                if ((swap !== null && this.values[rightChildIdx].priority > this.values[leftChildIdx].priority) ||
+                if ((swap !== null && this.values[rightChildIdx].priority < this.values[leftChildIdx].priority) ||
                     (swap === null && this.values[rightChildIdx].priority < this.values[parentIdx].priority)) {
                     swap = rightChildIdx;
                 }
