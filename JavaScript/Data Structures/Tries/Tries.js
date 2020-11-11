@@ -1,29 +1,67 @@
-class Trie {
-    constructor() {
-        this.characters = {};
+class Node {
+    constructor(char) {
+        this.char = char;
         this.isWord = false;
-    }
-    addWord(word, index = 0) {
-        if (index === word.length) {
-            this.isWord = true;
-        }
-        else if (index < word.length) {
-            let char = word[index];
-            let subTrie = this.characters[char] || new Trie();
-            //console.log(this.characters)
-            this.characters[char] = subTrie;
-            subTrie.addWord(word, index + 1);
-
-        }
-        return this;
+        this.children = {};
     }
 }
 
+class Trie {
+    constructor() {
+        this.root = new Node('');
+    }
+
+    helper(word) {
+        let current = this.root;
+        var char;
+        for (let i = 0; i < word.length; i++) {
+            char = word.charAt(i);
+            if (!current.children[char]) return null;
+            current = current.children[char];
+        }
+        return current;
+    }
+
+    insert(word) {
+        let current = this.root;
+        var char;
+        for (let i = 0; i < word.length; i++) {
+            char = word.charAt(i);
+            if (!current.children[char]) current.children[char] = new Node(char);
+            current = current.children[char];
+        }
+        current.isWord = true;
+        return this.root;
+    }
+
+    search(word) {
+        let node = this.helper(word);
+        if (node === null) return false;
+        return node.isWord;
+    }
+
+    startsWith(word) {
+        let node = this.helper(word);
+        if (node === null) return false;
+        return true;
+
+    }
+}
+
+
+
+
 var firstTrie = new Trie();
-firstTrie.addWord("fun");
-firstTrie.addWord("funny");
-//console.log(firstTrie.characters);
-//console.log(firstTrie.characters["f"]);
-//console.log(firstTrie.characters.f.characters);
-console.log(firstTrie.characters.f.characters.u);
-console.log(firstTrie.characters.f.characters.u.characters.n.characters.n);
+firstTrie.insert("fun");
+firstTrie.insert("funny");
+firstTrie.insert("gautham");
+console.log(firstTrie.root.children.f.children.u.children.n.children.n.children.y.children)
+console.log(firstTrie.search("funny"));
+console.log(firstTrie.search("fun"));
+console.log(firstTrie.search("gautha"));
+console.log(firstTrie.search("zebra"));
+
+console.log(firstTrie.startsWith("funny"));
+console.log(firstTrie.startsWith("fun"));
+console.log(firstTrie.startsWith("gautha"));
+console.log(firstTrie.startsWith("zebra"));
