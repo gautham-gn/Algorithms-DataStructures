@@ -34,6 +34,14 @@ class Trie {
         return this.root;
     }
 
+    size(obj) {
+        var size = 0;
+        for (var key in obj) {
+            size++;
+        }
+        return size;
+    }
+
     search(word) {
         let node = this.helper(word);
         if (node === null) return false;
@@ -65,3 +73,6 @@ console.log(firstTrie.startsWith("funny"));
 console.log(firstTrie.startsWith("fun"));
 console.log(firstTrie.startsWith("gautha"));
 console.log(firstTrie.startsWith("zebra"));
+
+console.log(firstTrie.remove("funny"));
+console.log(firstTrie)
