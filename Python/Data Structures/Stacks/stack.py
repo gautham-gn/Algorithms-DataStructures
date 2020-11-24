@@ -44,6 +44,9 @@ class Stack:
                 current = current.next
                 output.append(current.val)
         return output
+
+    def getSize(self):
+        return self.size
             
         
 stack = Stack()
