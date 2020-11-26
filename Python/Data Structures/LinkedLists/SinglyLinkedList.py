@@ -86,7 +86,6 @@ class SinglyLinkedList:
             return False
 
     def insert(self, idx, val):
-        node = Node(val)
         if idx < 0 or idx > self.length:
             return False
         elif idx == 0:
@@ -96,6 +95,7 @@ class SinglyLinkedList:
             newNode = self.push(val)
             if newNode: return True
         else:
+            node = Node(val)
             current = self.getNode(idx)
             previous = self.getNode(idx-1)
             previous.next = node
