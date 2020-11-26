@@ -62,7 +62,7 @@ class SinglyLinkedList:
         self.length += 1
         return self
 
-    def get(self, idx):
+    def getNode(self, idx):
         if self.length == 0 or idx < 0 or idx >= self.length:
             return None
         elif idx == 0:
@@ -77,13 +77,47 @@ class SinglyLinkedList:
                 current = current.next
             return current
 
-    def set(self, idx, val):
-        node = self.get(idx)
+    def setNode(self, idx, val):
+        node = self.getNode(idx)
         if node:
             node.val = val
             return True
         else:
             return False
+
+    def insert(self, idx, val):
+        node = Node(val)
+        if idx < 0 or idx > self.length:
+            return False
+        elif idx == 0:
+            newNode = self.unshift(val)
+            if newNode: return True
+        elif idx == self.length:
+            newNode = self.push(val)
+            if newNode: return True
+        else:
+            cnt = 1
+            current = self.getNode(idx)
+            previous = self.getNode(idx-1)
+            previous.next = node
+            node.next = current
+            self.length += 1
+            return True
+
+    def remove(self, idx):
+        if idx < 0 or idx >= self.length:
+            return None;
+        if idx == 0:
+            return self.shift()
+        elif idx == self.length - 1:
+            return self.pop()
+        else:
+            previous = self.getNode(idx-1)
+            current = previous.next
+            previous.next = current.next
+            current.next = None
+            self.length -= 1
+            return current.val
 
     def print(self):
         output = []
@@ -96,33 +130,21 @@ class SinglyLinkedList:
                 current = current.next
         return output
 
-sll = SinglyLinkedList()
-print(sll.get(0))
-print(sll.get(-10))
-print(sll.get(10))
-sll.unshift(1)
-print(sll.print())
-sll.unshift(2)
-print(sll.print())
-sll.unshift(3)
-print(sll.print())
-sll.unshift(4)
-print(sll.print())
-sll.push(5)
-print(sll.print())
-sll.push(6)
-print(sll.print())
-sll.set(0,10)
-print(sll.print())
-sll.set(1,11)
-print(sll.print())
-sll.set(2,12)
-print(sll.print())
-sll.set(3,13)
-print(sll.print())
-sll.set(4,14)
-print(sll.print())
-sll.set(5,15)
-print(sll.print())
-print(sll.set(6,15))
-print(sll.print())
+    def reverse(self):
+        if self.length == 0:
+            return None
+        elif self.length == 1:
+            return self
+        else:
+            current = self.head
+            self.head = self.tail
+            self.tail = self.head
+            prev = None
+            next = None
+            while current:
+                next = current.next
+                current.next = prev
+                prev = current
+                current = next
+            return self
+
