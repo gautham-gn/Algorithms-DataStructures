@@ -96,7 +96,6 @@ class SinglyLinkedList:
             newNode = self.push(val)
             if newNode: return True
         else:
-            cnt = 1
             current = self.getNode(idx)
             previous = self.getNode(idx-1)
             previous.next = node
