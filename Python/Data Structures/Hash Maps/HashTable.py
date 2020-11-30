@@ -56,7 +56,7 @@ print(map.set("orange", "#ffe354"))
 print(map.set("yellow", "#00ff5c"))
 print(map.set("maroon", "#00ff5c"))
 print(map.get("green"))
-print(map.get("pink"))
+print(map.get("pink"))  
 print(map.get("orange"))
 print(map.get("cyan"))
 print(map.get("blue"))
@@ -64,10 +64,3 @@ print(map.get("yellow"))
 print(map.get("sky"))
 print(map.keys())
 print(map.values())
-
-# [
-#   '#a69c5v', '#a03e5c',
-#   '#00ff5c', '#6fc092',
-#   '#ae3e5f', '#ffe354',
-#   '#bb3092', '#ff3092'
-# ]
