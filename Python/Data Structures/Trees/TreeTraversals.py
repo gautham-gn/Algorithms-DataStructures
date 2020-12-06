@@ -101,7 +101,7 @@ class BinarySearchTree:
         traverse(root)
         return result
 
-    def dfsPostOrder(self):
+    def dfsPostOrder(self, root):
         result = []
         def traverse(root):
             if root.left:
