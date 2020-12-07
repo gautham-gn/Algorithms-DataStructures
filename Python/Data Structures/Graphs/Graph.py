@@ -7,11 +7,12 @@ class Graph:
             self.adjacencyList[v] = []
 
     def addEdge(self, v1, v2):
-        if v1 not in self.adjacencyList or v2 not in self.adjacencyList:
-            return
-        else:
-            self.adjacencyList[v1].append(v2)
-            self.adjacencyList[v2].append(v1)
+        if v1 not in self.adjacencyList:
+            self.addVertex(v1)
+        if v2 not in self.adjacencyList:
+            self.addVertex(v2)
+        self.adjacencyList[v1].append(v2)
+        self.adjacencyList[v2].append(v1)
 
     def filter(self, list, vertex):
         output = []
@@ -45,6 +46,7 @@ g.addEdge('Dallas', 'Tokyo')
 g.addVertex('Hyderabad')
 g.addEdge('Hyderabad', 'Cairo')
 g.addEdge('Dallas', 'Hyderabad')
+g.addEdge('Chicago', 'Mason')
 print(g.adjacencyList)
 g.removeEdge('Dallas', 'Tokyo')
 print(g.adjacencyList)
