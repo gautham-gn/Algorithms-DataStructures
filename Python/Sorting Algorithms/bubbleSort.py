@@ -8,8 +8,8 @@ def bubbleSort(arr):
             if sortedArray[j] > sortedArray[j+1]:
                 sortedArray[j], sortedArray[j+1] = sortedArray[j+1], sortedArray[j]
                 noSwaps = False
-            if noSwaps:
-                break
+        if noSwaps:
+            break
     return sortedArray, loops
 
 print(bubbleSort([5,4,3,2,1]))
